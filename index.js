@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 const app = express()
 
 app.use(cors())
-
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
@@ -36,23 +35,20 @@ app.post('/sendMessage', async function (req, res) {
 
     // send mail with defined transport object
     let info = await transporter.sendMail({
-        from: '"Andrii 👻" <andriiyarotskiy@gmail.com>', // sender address
+        from: 'HR', // sender address
         to: "wnbroz20@meta.ua", // list of receivers
-        subject: "Тест gmail ✔", // Subject line
+        subject: "HR ✔", // Subject line
         text: "Описание", // plain text body
         html: `<b>Сообщение с вашего Portfolio</b>
-        <div>${name}</div>
-        <div>${contacts}</div>
-        <div>${message}</div>`
-
-        // html body
+        <div>name: ${name}</div>
+        <div>contacts: ${contacts}</div>
+        <div>message: ${message}</div>`
     });
-
     res.send("ok")
 })
 
 let port = process.env.PORT || 3010;
 
 app.listen(3010, () => {
-    console.log('port 3010')
+    console.log('Example app listening on port 3010')
 })
