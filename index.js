@@ -5,9 +5,9 @@ const bodyParser = require("body-parser");
 
 const app = express()
 
-app.use(cors())
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+app.use(cors());
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 
 let smt_login = process.env.SMTP_LOGIN || "----";
@@ -27,7 +27,7 @@ let transporter = nodemailer.createTransport({
 
 app.get('/', function (req, res) {
     res.send('Hello World')
-})
+});
 
 app.post('/sendMessage', async function (req, res) {
 
@@ -49,6 +49,6 @@ app.post('/sendMessage', async function (req, res) {
 
 let port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+app.listen(port, function () {
     console.log('Example app listening on port 3010')
 })
